@@ -2,3 +2,11 @@ Dichiarazione di Map e Fold
 
 Map (MapFunctor, void*);
 Fold (FoldFunctor, const void*, void*) const noexcept;  -> Richiama solo funzioni con specifier Const
+
+-----------------------------------------------------------------------------------------------------
+
+Ereditarietà da classi per diverse implementazioni
+
+Se bisogna implementare una classe astratta con diverse implementazioni ad, esempio StackVec o StackLst,
+bisogna ereditare in modo protected da Vector e da List, perché l'utilizzatore non deve poter accedere
+alle funzioni membro di Vector/List, ma solo a quelle di Stack.
