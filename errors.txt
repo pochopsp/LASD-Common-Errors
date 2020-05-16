@@ -2,3 +2,16 @@ Dichiarazione di Map e Fold
 
 Map (MapFunctor, void*);
 Fold (FoldFunctor, const void*, void*) const noexcept;  -> Richiama solo funzioni con specifier Const
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Mogavero su Move Constructor e Move Assignment :
+
+  struttura1;
+  struttura2 = std::move(struttura1);
+
+In questo caso col MOVE ASSIGNMENT è buona norma che struttura1 venga posta in uno stato consistente, in modo da poterla utilizzare, in effetti la move è (in qualche modo) un sinonimo di std::swap(struttura1, struttura2). Quindi se ha implementato il move assignment come swap allora com la sua istruzione avrà semplicemente scambiato il contenuto delle due strutture e pertanto potrà utilizzare entrambe.
+
+Il MOVE CONSTRUCTOR, invece, di solito si pone la struttura1 in uno stato consistente arbitrario (il più semplice è quello di struttura vuota).
+
+-----------------------------------------------------------------------------------------------------------------------------------
